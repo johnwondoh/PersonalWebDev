@@ -3,45 +3,36 @@
     <div class="container">
         <form class="form-formatting">
             <!-- Project Title -->
-            <div class="form-group row">
-                <label class="col-sm-2" for="projectTitle">Title</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control-file" id="exampleFormControlFile1">
-                </div>
+            <div class="form-group">
+                <input type="text" class="form-control-file" placeholder="Project Title">
             </div>
-            
             <!-- Description -->
             <div class="form-group">
-                <label for="description">Description:</label>
-                <textarea class="form-control" rows="5" id="description"></textarea>
+                <textarea class="form-control" rows="5" placeholder="Project description here (may require HTML markups)"></textarea>
             </div>
-            
             <!-- Add image -->
             <div class="container img-input">
                 <p class="center-text"><em>Add image from your computer or with a url</em></p>
                 <div class="form-group row">
                     <!-- from your computer -->
-                    <label class="col-sm-2" for="exampleFormControlFile1">Add a picture</label>
-                    <div class="col-sm-10">
-                        <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                    <div class="col-md-4">
+                        <input type="file" class="form-control-file" placeholder="something here">
                     </div>
-                </div>
-                <div class="form-group row">
                     <!-- from a link -->
-                    <label class="col-sm-2" for="imageURL">Image URL</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control-file" id="imageURL">
+                    <div class="col-md-6">
+                        <input type="text" class="form-control-file" placeholder="Paste image url here">
+                    </div>
+                    <!-- Check to hiden from non-login users -->
+                    <div class="col-md-2 form-check">
+                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                        <label class="form-check-label" for="exampleCheck1">Hide</label>
                     </div>
                 </div>
             </div>
-            
-            <!-- Check to hiden from non-login users -->
-            <div class="form-check">
-                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                <label class="form-check-label" for="exampleCheck1">Hide</label>
-            </div>
+        
             <div>
-                <input class="btn btn-outline-secondary btn-sm" type="submit">
+                <input class="btn btn-outline-success btn-sm" type="submit">
+                <a class="btn btn-outline-danger btn-sm" >Discard</a>
             </div>
         </form>
     </div>
