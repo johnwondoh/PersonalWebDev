@@ -1,18 +1,20 @@
 <% include ../partials/header %>
 
     <div class="container">
-        <form class="form-formatting" action="/projects" method="POST">
+        <form class="form-formatting" action="/projects/<%=project._id%>?_method=PUT" method="POST">
             <!-- Project Title -->
             <div class="form-group">
-                <input type="text" class="form-control-file" placeholder="Project Title" name="project[title]">
+                <input type="text" class="form-control-file" placeholder="Project Title" name="project[title]" value="<%=project.title%>">
             </div>
             <!-- Description -->
             <div class="form-group">
-                <textarea class="form-control" rows="16" placeholder="Project description here (may require HTML markups)" name="project[content]"></textarea>
+                <textarea class="form-control" rows="16"
+                    placeholder="Project description here (may require HTML markups)" 
+                    name="project[content]"><%=project.content%></textarea>
             </div>
             <!-- Add image -->
             <div class="container img-input">
-                <p class="center-text"><em>Add image from your computer or with a url</em></p>
+                <!--<p class="center-text"><em>Add image from your computer or with a url</em></p>-->
                 <div class="form-group row">
                     <!-- from your computer -->
                     <!--<div class="col-md-4">-->
@@ -20,13 +22,14 @@
                     <!--</div>-->
                     <!-- from a link -->
                     <div class="col-md-7">
-                        <input type="text" class="form-control-file" placeholder="Paste image url here" name="project[image]">
+                        <input type="text" class="form-control-file" placeholder="Paste image url here" name="project[image]" value="<%=project.image%>">
                     </div>
                     <!-- Project status-->
                     <div class="col-md-4">
                         <!--<labe class="col-form-label" for="projectStatus">Project Status <span class="small">(between 0 and 100)</span></labe>-->
                         <input type="number" step="1" class="form-control-file" id="projectStatus" 
-                            min="0" max="100" name="project[status]" placeholder="Project Status (between 0 and 100)">
+                            min="0" max="100" name="project[status]" 
+                            placeholder="Project Status (between 0 and 100)" value="<%=project.status%>">
                     </div>
                     <!-- Check to hiden from non-login users -->
                     <div class="col-md-1 form-check">

@@ -19,14 +19,22 @@
     background-position: center; 
 }
 
-
-.navbar-default {
-    background-color: #6699ff;
-    border-color: #E7E7E7;
+.jumbotron-try {
+    border-bottom: solid 1px red; 
 }
+
+
+/*.navbar-default {*/
+/*    background-color: #6699ff;*/
+/*    border-color: #E7E7E7;*/
+/*}*/
 
 i.fas {
     font-size: 1.5em;
+}
+
+a.fab {
+    font-size: 2em;
 }
 
 .form-formatting {
@@ -66,10 +74,64 @@ i.fas {
     .navbar-fixed-top, .navbar-fixed-bottom, .navbar-static-top {
       margin-left: 0;
       margin-right: 0;
-      margin-bottom:0;
+      margin-bottom:20;
     }
 }
 
+
+/*==== skicky footer=====*/
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    /*background-color: gray;*/
+    color: white;
+    text-align: center;
+    margin-top: 70px;
+    /*======= Gradiant =======*/
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#7d7e7d+0,0e0e0e+100;Black+3D */
+    background: #7d7e7d; /* Old browsers */
+    background: -moz-linear-gradient(top, #7d7e7d 0%, #0e0e0e 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, #7d7e7d 0%,#0e0e0e 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, #7d7e7d 0%,#0e0e0e 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7d7e7d', endColorstr='#0e0e0e',GradientType=0 ); /* IE6-9 */
+}
+.clear { clear: both; height: 60px; }
+
+/*====== added in javascript for hovering over research items ======*/
+.hoverResearchItem{
+    /*border: 2px red solid;*/
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border: 1px solid #bdbfc1;
+    border-right-color: blue;
+    border-right-style: inset;
+    border-right-width: 0.5rem;
+}
+
+
+/*====== For fading in the names of social icons =====*/
+.socialsFade{
+    background-color: #e74c3c;
+	/*height: 40px;*/
+	/*vertical-align: middle;*/
+	/*margin-right: 20px;*/
+	font-size: smaller;
+	text-align: center;
+	color: white;
+	width: 0;
+	display: inline-block;
+	transition: 0.2s linear; /*fades the span in*/
+	opacity: 0; /*to make sure the trash can isn't showing at all*/
+	overflow: hidden;
+}
+
+
+li:hover span.socialsFade{
+	width: 80px;
+	opacity: 1;
+}
 /*.navbar-changes {*/
 /*    background-color: black;*/
 /*}*/
@@ -78,3 +140,88 @@ i.fas {
 /*@media screen and (max-width: 768px) {*/
 /*    body { padding-top: 0px; }*/
 /*}*/
+
+body { 
+    padding-top: 65px; 
+}
+
+
+/*----- From w3school for navbars ------*/
+.navbar {
+    font-family: Montserrat, sans-serif;
+    margin-bottom: 0;
+    background-color: #2d2d30;
+    border: 0;
+    font-size: 15px !important;
+    letter-spacing: 1px;
+    opacity: 0.9;
+}
+
+.navbar li a, .navbar .navbar-brand { 
+    color: #d5d5d5 !important;
+}
+.navbar-nav li a:hover {
+    color: #fff !important;
+}
+
+.navbar-nav li.active a {
+    color: #fff !important;
+    background-color: #29292c !important;
+}
+.navbar-default .navbar-toggle {
+    border-color: transparent;
+}
+
+
+/*--- project show page image max height ---*/
+.card-img-top{
+    max-height: 300px;
+    object-fit: cover;
+}
+
+.hideAbstract {
+    height: 0;
+    visibility: hidden;
+    /*display: none;*/
+}
+
+/*.showAbstract {*/
+/*    visibility: hidden;*/
+    /*display: none;*/
+/*}*/
+
+
+hr.style-two {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+}
+
+/* justified align*/
+.ab-align{
+    text-align: justify;
+}
+
+/* center core info */
+.rank-area h6{
+    /*margin: auto 0;*/
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.rank-area {
+    border-left: 1px solid #e3e7ed;
+    /*background: rgb(203,203,203);*/
+    /*background: -webkit-linear-gradient(left, rgba(203,203,203,1) 0%, rgba(234,234,245,1) 44%, rgba(179,179,179,1) 100%);*/
+    /*background: -moz-linear-gradient(left, rgba(203,203,203,1) 0%, rgba(234,234,245,1) 44%, rgba(179,179,179,1) 100%);*/
+    /*background: -o-linear-gradient(left, rgba(203,203,203,1) 0%, rgba(234,234,245,1) 44%, rgba(179,179,179,1) 100%);*/
+    /*background: linear-gradient(to right, rgba(203,203,203,1) 0%, rgba(234,234,245,1) 44%, rgba(179,179,179,1) 100%);*/
+}
+
+.card{
+    margin: 20px;
+}

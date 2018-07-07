@@ -1,0 +1,29 @@
+<% include ../partials/header %>
+
+    <div class=" container card mb-3">
+        <img class="card-img-top img-thumbnail rounded mx-auto d-block" src="<%=project.image%>" alt="Card image cap">
+        <div class="card-body">
+            <h5 class="card-title"><%=project.title%></h5>
+            <p class="card-text"><%=project.content%></p>
+            
+            <!-- status -->
+            <div>
+                <div class="progress">
+                    <div class="progress-bar" role="progressbar" style="width: <%=project.status%>%" aria-valuenow="<%=project.status%>" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+            </div>
+            
+            <p class="card-text"><small class="text-muted">Updated on: <%=project.created.toDateString()%></small></p>
+            
+            <form action="/projects/<%=project._id%>?_method=DELETE" method="POST">
+                <a href="/projects/<%=project._id%>/edit" class="btn btn-outline-warning btn-sm">Edit</a>
+                <button class="btn btn-outline-danger btn-sm">Delete</button>
+            </form>
+        </div>
+        <div>
+            <a href="/projects" class="huge"><i class="fas fa-arrow-circle-left"></i></a>
+        </div>
+    </div>
+    
+    
+<% include ../partials/footer %>

@@ -9,8 +9,11 @@
   "author": "John Wondoh",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.18.3",
     "ejs": "^2.6.1",
     "express": "^4.16.3",
+    "method-override": "^2.3.10",
+    "mongoose": "^5.2.1",
     "request": "^2.87.0"
   }
 }

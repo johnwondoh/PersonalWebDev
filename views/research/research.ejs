@@ -1,0 +1,95 @@
+<% include ../partials/header %>
+    <div class="jumbotron jumbotron-try">
+        <h1 class="page-header">Research Page</h1>
+        <p>Some important content here describing the page</p>
+    </div>
+    <div class="container publications">
+        <div class=container>
+            <a class="btn btn-primary btn-sm" href="/research/new">Add new research publication</a>
+        </div>
+        <!-- Cards showing research activities -- shoule iterate and automaticall generate them -->
+        <% publicationData.forEach( function(publication){ %>
+        <div class="container">
+            <div class="card">
+                <!--<img class="card-img-left img-thumbnail" src="https://images.unsplash.com/photo-1525856326341-8adeed4c8b8b?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=664eca9d03a5be8e34786a5222862411&auto=format&fit=crop&w=1965&q=80" alt="Card image cap">-->
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-lg-10">
+                            <h5 class="card-title"><%= publication.title %></h5>
+                            <h6 class="card-subtitle mb-2">
+                                <%= publication.authors %>
+                            </h6>
+                            <h6 class="card-subtitle mb-2 text-muted">
+                                <%= publication.venue %> | <%= publication.year %> 
+                            </h6>
+                            <!--<div>-->
+                            <!--    <button type="button" class="slideDownBtn btn btn-info btn-sm">View Abstract</button>-->
+                            <!--</div>-->
+                            <!--slide to show abstract here-->
+                            <h6 class="card-subtitle">Abstract</h6>
+                            <p class="card-text ab-align"><%=publication.abstract%></p>
+                            <!--<p class="card-text showAbstract hideAbstract"></p>-->
+                            <hr class="style-two">
+                            <div class="float-right">
+                                <span class="card-subtitle text-muted">Get access: </span>
+                                <a href="<%=publication.doi%>" class="card-link">DOI</a>
+                                <a href="<%=publication.url%>" class="card-link">URL</a>
+                            </div>
+                            
+                            <div>
+                                <form class="delete-form" action="/research/<%=publication._id%>?_method=DELETE" method="POST">
+                                    <a href="/research/<%=publication._id%>/edit" class="btn btn-warning btn-sm">Edit</a>
+                                    <button class="btn btn-danger btn-sm">Delete</button>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 rank-area">
+                            <h6>Core Ranked A</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <% }) %>
+    </div>
+
+
+<!--<div id="flip">Click to slide down panel</div>-->
+<!--<div id="panel">Hello world!</div>-->
+
+<script>
+    var cardBody = document.querySelectorAll('.card-body');
+    for(var i=0; i<cardBody.length; i++){
+        cardBody[i].addEventListener('mouseover', function(){
+            this.classList.add('hoverResearchItem');
+        });
+        
+        cardBody[i].addEventListener('mouseout', function(){
+            this.classList.remove('hoverResearchItem');
+        });
+    }
+    
+    $(document).ready(function(){
+        $("#flip").click(function(){
+            $("#panel").slideDown("slow");
+        });
+    });
+    
+    // var button = document.querySelectorAll('.slideDownBtn')
+    // var abstract = document.querySelectorAll('.showAbstract')
+    // console.log(abstract[0]);
+    // for(var i=0; i<button.length; i++){
+    //     // console.log(i);
+    //     button[i].addEventListener('click', function(){
+    //         alert(i);
+    //         console.log(abstract[i]);
+    //         console.log(i);
+    //         abstract[i].classList.toggle('hideAbstract')
+    //         // abstract[i].classList.remove('hideAbstract');
+    //     });
+    // }
+</script>
+
+
+
+<% include ../partials/footer %>

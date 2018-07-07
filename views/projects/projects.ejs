@@ -1,8 +1,25 @@
 <% include ../partials/header %>
 
-<div class="container">
-    <h1>My projects</h1>
-    <button type="button" class="btn btn-primary">Add New Project</button>
-</div>
+    <div class="container">
+        <h1>My projects</h1>
+        <a class="btn btn-primary" href="/projects/new">Add New Project</a>
+    </div>
+    
+    <% projects.forEach(function(project){%>
+        <div class="container">
+            <div class="card">
+                <h5 class="card-header"><%= project.title %></h5>
+                <div class="card-body">
+                    <!--<h5 class="card-title">Special title treatment</h5>-->
+                    <p class="card-text"><%= project.content %></p>
+                    <!--<p class="card-subtitle mb-2 text-muted">Updated on: <%= project.created %></p>-->
+                    <a href="/projects/<%=project._id%>" class="btn btn-outline-primary btn-sm">View Project <i class="fas fa-chevron-right"></i></a>
+                </div>
+                <div class="card-footer text-muted">
+                    Updated on: <%= project.created %>
+                </div>
+            </div>
+        </div>
+    <% })%>
 
 <% include ../partials/footer %>

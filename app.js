@@ -1,11 +1,23 @@
-var express = require("express"),
-    request = require("request");
+var express         = require("express"),
+    mongoose        = require("mongoose"),
+    bodyParser      = require("body-parser"),
+    methodOverride  = require("method-override"),
+    Publication     = require("./models/publications"),
+    Project         = require("./models/projects"),
+    seedDB          = require("./seed");
+
+var researchRoutes = require("./routes/research");
+var projectRoutes = require("./routes/project");
+
+mongoose.connect('mongodb://localhost/blogDB');
 
 var app = express();
-
+app.use(bodyParser.urlencoded({extended: true}));
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
-
+app.use(methodOverride("_method"));
+// Adds my publications to the database - only required once
+// seedDB();
 
 
 /********* Routes *************/
@@ -14,30 +26,12 @@ app.get('/', function(req, res){
     res.render('home');
 });
 
-// Research page route
-app.get('/research', function(req, res){
-    // using dblp API to retrieve my publication information
-    var source = "http://dblp.org/search/publ/api?q=wondoh+john&format=json";
-    
-    request(source, function(error, response, body){
-        if(!error && response.statusCode==200){
-            var data = JSON.parse(body);
-            // console.log(data.result.hits.hit);
-            res.render('research', {publicationData: data.result.hits.hit});
-        }
-    });
-});
-
-app.get('/projects', function(req, res) {
-    // this should retrieve projects from the database and display them
-    res.render('projects/projects');
-});
 
 
-/****** CREATE and POST new Projects*******/
-app.get('/projects/new', function(req, res) {
-    res.render('projects/new');
-});
+
+
+app.use("/", researchRoutes);
+app.use("/", projectRoutes);
 
 
 app.listen(process.env.PORT, process.env.IP, function(){

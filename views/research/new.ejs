@@ -1,0 +1,50 @@
+<% include ../partials/header %>
+
+    <div class="container">
+        <form class="form-formatting" action="/research" method="POST">
+            <div class="form-group">
+                <input type="text" class="form-control-file" name="publication[title]" placeholder="Paper Title">
+            </div>
+            <div class="form-group row">
+                <div class="col-md-7">
+                    <input type="text" class="form-control-file" name="publication[authors]" placeholder="Authors">
+                </div>
+                <div class="col-md-5">
+                    <input type="text" class="form-control-file" name="publication[venue]" placeholder="Venue">
+                </div>
+            </div>
+            <!--<div class="form-group">-->
+            <!--    <input type="text" class="form-control-file" name="publication[venue]" placeholder="Venue">-->
+            <!--</div>-->
+            
+            <div class="form-group row">
+                <div class="col-md-9">
+                    <input type="text" class="form-control-file" name="publication[type]" placeholder="Type">
+                </div>
+                <div class="col-md-3">
+                    <!--<input type="year" class="form-control-file" placeholder="Year">-->
+                    <select class="custom-select mr-sm-2" id="year" name="publication[year]"></select>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <textarea class="form-control" rows="12" name="publication[abstract]" placeholder="Abstract"></textarea>
+            </div>
+            
+            <div class="form-group row">
+                <div class="col-md-6">
+                    <input type="text" class="form-control-file" name="publication[doi]" placeholder="DOI">
+                </div>
+                <div class="col-md-6">
+                    <input type="text" class="form-control-file" name="publication[url]" placeholder="URL">
+                </div>
+            </div>
+            
+            <div>
+                <input class="btn btn-outline-success btn-sm" type="submit">
+                <a class="btn btn-outline-danger btn-sm" href="/research" >Discard</a>
+            </div>
+        </form>
+    </div>
+
+<% include ../partials/footer %>
