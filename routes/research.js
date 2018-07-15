@@ -1,6 +1,7 @@
 var express = require("express");
 var router = express.Router();
 var Publication = require("../models/publications");
+var middleware = require("../middleware/index"); 
 
 // Research page route
 router.get('/research', function(req, res){
@@ -16,11 +17,11 @@ router.get('/research', function(req, res){
 
 /****** CREATE and EDIT research entries ******/
 // new page for entering new research item
-router.get('/research/new', function(req, res) {
+router.get('/research/new', middleware.isLoggedIn, function(req, res) {
    res.render('research/new');
 });
 // post route for handling new research item
-router.post('/research', function(req, res){
+router.post('/research', middleware.isLoggedIn, function(req, res){
     var newPublication = req.body.publication;
     Publication.create(newPublication, function(err, createdPublication){
         if(err){
@@ -33,7 +34,7 @@ router.post('/research', function(req, res){
     // res.redirect('/research');
 });
 /* -- edit research request*/
-router.get('/research/:id/edit', function(req, res) {
+router.get('/research/:id/edit', middleware.isLoggedIn, function(req, res) {
     Publication.findById(req.params.id, function(err, foundPublication){
         if(err){
             console.log(err);
@@ -43,7 +44,7 @@ router.get('/research/:id/edit', function(req, res) {
     });
 });
 // Update research -- handling edit
-router.put('/research/:id', function(req, res){
+router.put('/research/:id', middleware.isLoggedIn, function(req, res){
     Publication.findByIdAndUpdate(req.params.id, req.body.publication, function(err, updatedPublication){
         if(err){
             console.log(err);
@@ -53,7 +54,7 @@ router.put('/research/:id', function(req, res){
     });
 });
 
-router.delete('/research/:id', function(req, res){
+router.delete('/research/:id', middleware.isLoggedIn, function(req, res){
     Publication.findByIdAndRemove(req.params.id, function(err){
         if(err){
             console.log(err);

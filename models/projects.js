@@ -6,6 +6,7 @@ var projectSchema = new mongoose.Schema({
     image: String,
     status: String,
     hide: String,
+    summary: String,
     created: {type: Date, default: Date.now}
 });
 module.exports = mongoose.model('Project', projectSchema);

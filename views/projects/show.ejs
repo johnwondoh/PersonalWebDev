@@ -1,10 +1,10 @@
 <% include ../partials/header %>
 
-    <div class=" container card mb-3">
-        <img class="card-img-top img-thumbnail rounded mx-auto d-block" src="<%=project.image%>" alt="Card image cap">
+    <div class=" container card project-show">
+        <img class="card-img-top rounded-project-image mx-auto d-block" src="<%=project.image%>" alt="Card image cap">
         <div class="card-body">
             <h5 class="card-title"><%=project.title%></h5>
-            <p class="card-text"><%=project.content%></p>
+            <p class="card-text"><%-project.content%></p>
             
             <!-- status -->
             <div>
@@ -15,10 +15,12 @@
             
             <p class="card-text"><small class="text-muted">Updated on: <%=project.created.toDateString()%></small></p>
             
-            <form action="/projects/<%=project._id%>?_method=DELETE" method="POST">
-                <a href="/projects/<%=project._id%>/edit" class="btn btn-outline-warning btn-sm">Edit</a>
-                <button class="btn btn-outline-danger btn-sm">Delete</button>
-            </form>
+            <% if(currentUser){%>
+                <form action="/projects/<%=project._id%>?_method=DELETE" method="POST">
+                    <a href="/projects/<%=project._id%>/edit" class="btn btn-outline-warning btn-sm">Edit</a>
+                    <button class="btn btn-outline-danger btn-sm">Delete</button>
+                </form>
+            <% } %>
         </div>
         <div>
             <a href="/projects" class="huge"><i class="fas fa-arrow-circle-left"></i></a>

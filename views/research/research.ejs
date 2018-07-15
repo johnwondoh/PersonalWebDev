@@ -1,12 +1,18 @@
 <% include ../partials/header %>
-    <div class="jumbotron jumbotron-try">
-        <h1 class="page-header">Research Page</h1>
-        <p>Some important content here describing the page</p>
+    <div class="jumbotron jumbotron-fluid jumbotron-try">
+        <!--<h1 class="page-header">Research Page</h1>-->
+        <!--<p>Some important content here describing the page</p>-->
+        <h1 class="display-4">Research Contributions</h1>
+        <p class="lead">
+            This is a modified jumbotron that occupies the entire horizontal space of its parent.
+        </p>
     </div>
-    <div class="container publications">
-        <div class=container>
-            <a class="btn btn-primary btn-sm" href="/research/new">Add new research publication</a>
-        </div>
+    <div class="container-fluid publications">
+        <% if(currentUser){%>
+            <div class=container>
+                <a class="btn btn-primary btn-sm" href="/research/new">Add new research publication</a>
+            </div>
+        <% } %>
         <!-- Cards showing research activities -- shoule iterate and automaticall generate them -->
         <% publicationData.forEach( function(publication){ %>
         <div class="container">
@@ -26,7 +32,7 @@
                             <!--    <button type="button" class="slideDownBtn btn btn-info btn-sm">View Abstract</button>-->
                             <!--</div>-->
                             <!--slide to show abstract here-->
-                            <h6 class="card-subtitle">Abstract</h6>
+                            <h6 class="abstract-title">Abstract</h6>
                             <p class="card-text ab-align"><%=publication.abstract%></p>
                             <!--<p class="card-text showAbstract hideAbstract"></p>-->
                             <hr class="style-two">
@@ -36,15 +42,17 @@
                                 <a href="<%=publication.url%>" class="card-link">URL</a>
                             </div>
                             
-                            <div>
-                                <form class="delete-form" action="/research/<%=publication._id%>?_method=DELETE" method="POST">
-                                    <a href="/research/<%=publication._id%>/edit" class="btn btn-warning btn-sm">Edit</a>
-                                    <button class="btn btn-danger btn-sm">Delete</button>
-                                </form>
-                            </div>
+                            <% if(currentUser){%>
+                                <div>
+                                    <form class="delete-form" action="/research/<%=publication._id%>?_method=DELETE" method="POST">
+                                        <a href="/research/<%=publication._id%>/edit" class="btn btn-warning btn-sm">Edit</a>
+                                        <button class="btn btn-danger btn-sm">Delete</button>
+                                    </form>
+                                </div>
+                            <% } %>
                         </div>
                         <div class="col-lg-2 rank-area">
-                            <h6>Core Ranked A</h4>
+                            <h6>Core Ranked <%=publication.rank%></h4>
                         </div>
                     </div>
                 </div>
@@ -69,11 +77,11 @@
         });
     }
     
-    $(document).ready(function(){
-        $("#flip").click(function(){
-            $("#panel").slideDown("slow");
-        });
-    });
+    // $(document).ready(function(){
+    //     $("#flip").click(function(){
+    //         $("#panel").slideDown("slow");
+    //     });
+    // });
     
     // var button = document.querySelectorAll('.slideDownBtn')
     // var abstract = document.querySelectorAll('.showAbstract')

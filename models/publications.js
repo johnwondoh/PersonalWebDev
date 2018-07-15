@@ -9,6 +9,7 @@ var publicationSchema = new mongoose.Schema({
     abstract: String,
     url: String,
     doi: String,
+    rank: String,
     created: {type: Date, default: Date.now}
 });
 module.exports = mongoose.model('Publication', publicationSchema);

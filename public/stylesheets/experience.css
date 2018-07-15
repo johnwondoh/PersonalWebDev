@@ -1,0 +1,65 @@
+/*   experience  */
+.experience {
+    margin: 20px 200px;
+    padding: 30px;
+    background-color: white;
+}
+
+.experience-title {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+}
+
+.experience-subtitle {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.experience li {
+    /*font-family: 'Open Sans', sans-serif;*/
+    font-family: 'Karla', sans-serif;
+    font-weight: 400;
+    /*font-style: italic;*/
+    font-size: 16px;    
+}
+
+.p-text {
+    /*font-family: 'Open Sans', sans-serif;*/
+    font-family: 'Karla', sans-serif;
+    font-weight: 400;
+    /*font-style: italic;*/
+    font-size: 16px;
+    line-height: 1.6em;
+    font-style: italic;
+}
+
+.date-el {
+    font-size: 13px;
+    float: right;
+    font-weight: normal;
+    font-style: italic;
+}
+
+
+@media (max-width: 978px) {
+    .experience {
+        margin: 20px auto;
+        min-width: 200px;
+        max-width: 600px;
+        padding: 20px;
+        background-color: white;
+    }
+    
+  
+}
+
+@media (max-width: 575.98px) {
+    .experience {
+        margin: 20px auto;
+        padding: 20px;
+        min-width: 250px;
+        background-color: white;
+    }
+}

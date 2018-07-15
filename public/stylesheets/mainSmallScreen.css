@@ -1,0 +1,120 @@
+@media (max-width: 978px) {
+    /*.container {*/
+    /*  padding:0;*/
+    /*  margin:0;*/
+    /*}*/
+    
+    .form-formatting {
+        padding: 7px;
+        margin: 2px;
+    }
+
+    body {
+        /*padding:0;*/
+        padding-top: 55px;
+    }
+
+    .navbar-fixed-top, .navbar-fixed-bottom, .navbar-static-top {
+      margin-left: 0;
+      margin-right: 0;
+      margin-bottom:20;
+    }
+    
+    .container {
+        /*margin-right: 0;*/
+        /*margin-left: 30px;*/
+        padding: 0;
+        /*width: 100%;*/
+        max-width: 80rem;
+        /*width: 800px;*/
+    }
+    
+    .rounded {
+        width: 200px;
+        /*margin: auto;*/
+        /*position: absolute;*/
+        position: relative;
+        /*right: 5%;*/
+        /*bottom: 30%; */
+        /* -10%; */
+        border-radius: 21px;
+        padding-bottom: 10px;
+    }
+    
+    .p-lg-5 .text-center {
+        /*margin-bottom: 5px;*/
+        padding: 0;
+        text-align: center;
+    }
+    
+    .my-5 .text-center {
+        margin: 0;
+        padding: 0;
+        text-align: center;
+    }
+    
+    .form-formatting {
+        /*width: 50em;*/
+        margin: 40px auto;
+        margin-bottom: 60px;
+        /*padding: 1rem;*/
+        padding-left: 20px;
+        min-width: 400px;
+        max-width: 600px;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .container {
+        margin: 1px;
+        padding: 1px;
+    }
+    
+    section {
+       padding: 25px;
+    }
+    
+    .tool-title, .home-tool-style {
+        /*font-size: 20px;*/
+        text-align: center;
+    }
+    
+    /* resetting login position for small screens*/
+    #right {
+        position:relative;
+        right:0px;
+    }
+    
+    .card {
+        margin: 5px auto;
+        padding: 10px;
+        min-width: 250px;
+        background-color: white;
+    }
+    
+    .small-img {
+        max-height: 300px;
+        /*background-repeat: no-repeat;*/
+        /*background-size:cover;*/
+        /*background-position: center center;*/
+        background-size:cover
+        /*width: 100%;*/
+        /*position: relative;*/
+    }
+    
+    .project-show {
+        /*margin: 0 auto;*/
+        margin-bottom: 80px;
+    }
+    
+    .form-formatting {
+        /*width: 50em;*/
+        margin: 10px auto;
+        margin-bottom: 100px;
+        /*padding: 1rem;*/
+        padding-left: 20px;
+        min-width: 200px;
+        max-width: 400px;
+    }
+
+}

@@ -1,0 +1,19 @@
+<% include ./partials/header %>
+
+    <div id="login-form">
+ 		<h1>Enter details</h1>
+ 		<form action="/login" method="POST" id="login-form-style">
+ 		    <div>
+ 		        <input class="form-control mb-2" type="text" placeholder="Username" name="username">
+ 		    </div>
+ 		    <div>
+ 		        <input class="form-control mb-2" type="password" placeholder="password" name="password">
+ 		    </div>
+ 		    <div>
+     		    <input class="btn btn-primary btn-block mb-2" type="Submit">
+ 	        </div>
+ 		</form>
+		<!--<a href="/campgrounds" class="btn btn-lg btn-success">View All Campgrounds</a>-->
+    </div>
+
+<% include ./partials/footer %>
