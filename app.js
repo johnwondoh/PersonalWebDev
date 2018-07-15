@@ -11,15 +11,45 @@ var express         = require("express"),
     LocalStrategy   = require("passport-local"),
     flash           = require("connect-flash");
 
+var app = express();
+
+/* packages for adding uploading files (particularly images) in our projects */
+var path              = require("path"),
+    crypto            = require("crypto"),
+    multer            = require("multer"),
+    GridFsStorage     = require("multer-gridfs-storage"),
+    Grid              = require("gridfs-stream");
+
+
+/* adding routes */ 
 var researchRoutes = require("./routes/research");
 var projectRoutes = require("./routes/project");
 var experienceRoutes = require("./routes/experience");
 var awardRoutes = require("./routes/award");
 var indexRoutes = require("./routes/index");
 
-mongoose.connect('mongodb://localhost/blogDB');
 
-var app = express();
+/* old connection approach*/
+// mongoose.connect('mongodb://localhost/blogDB');
+
+/* -- mongo connection set -- new way -- also adding gridfs --*/ 
+// Mongo URI
+const mongoURI = 'mongodb://localhost/blogDB'; 
+// Create mongo connection
+const conn = mongoose.createConnection(mongoURI);
+// init gfs
+let gfs;
+// connect, and ensure it is openned before assigning gfs
+conn.once('open', () => {
+    // initiation stream
+  gfs = Grid(conn.db, mongoose.mongo);
+  gfs.collection('uploads');
+});
+app.use(bodyParser.json());
+
+/*------------------------------------------------------------*/
+
+
 app.use(bodyParser.urlencoded({extended: true}));
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
@@ -59,7 +89,61 @@ app.use(function(req, res, next){
 
 
 
+//create storage engine
+const  storage = new GridFsStorage({
+  url: mongoURI,
+  file: (req, file) => {
+    return new Promise((resolve, reject) => {
+      crypto.randomBytes(16, (err, buf) => {
+        if (err) {
+          return reject(err);
+        }
+        const filename = buf.toString('hex') + path.extname(file.originalname);
+        const fileInfo = {
+          filename: filename,
+          bucketName: 'uploads'
+        };
+        resolve(fileInfo);
+      });
+    });
+  }
+});
+const upload = multer({ storage });
 
+
+app.post('/upload', upload.single('file'), (req, res)=>{
+    // res.json({file: req.file});
+    res.redirect('/');
+});
+
+// @route GET /image/:filename
+// @desc Display image with the given filename
+app.get('/image/:filename', (req, res)=>{
+  gfs.files.findOne({filename: req.params.filename}, (err, file)=>{
+    if(!file || file.length === 0){
+      return res.status(404).json({
+        err: 'No file exists'
+      });
+    }
+    // check if file is an image
+    if(file.contentType === "image/jpeg" || file.contentType === "image/png "){
+      const readstream = gfs.createReadStream(file.filename);
+      readstream.pipe(res);
+    } else {
+      res.status(404).json({
+        err: 'Not an image'
+      });
+    }
+  });
+});
+
+
+// @route POST /upload
+// @desc uploads file to db
+// app.post('/upload', upload.single('file'), (req, res)=>{
+//     // res.json({file: req.file});
+//     res.redirect('/');
+// })
 
 
 app.use("/", researchRoutes);

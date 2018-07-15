@@ -8,11 +8,65 @@ var passport = require("passport");
 var User     = require("../models/user");
 
 
+/*--------------------------------------------------*/
+var mongoose = require("mongoose"),
+    path              = require("path"),
+    crypto            = require("crypto"),
+    multer            = require("multer"),
+    GridFsStorage     = require("multer-gridfs-storage"),
+    Grid              = require("gridfs-stream");
+    
+// Mongo URI
+const mongoURI = 'mongodb://localhost/blogDB'; 
+// Create mongo connection
+const conn = mongoose.createConnection(mongoURI);
+
+// init gfs
+let gfs;
+
+conn.once('open', () => {
+    // initiation stream
+  gfs = Grid(conn.db, mongoose.mongo);
+  gfs.collection('uploads');
+});
+/*--------------------------------------------------*/
+
+
 /********* Routes *************/
 // Home page route
 router.get('/', function(req, res){
-    res.render('home');
+    // res.render('home');
+    gfs.files.find().toArray((err, files)=>{
+        //check if files exist
+        if(!files || files.length === 0){
+          res.render('home', {file: false});
+        } else {
+          // map is a high level JS array -- you can learn more about this
+          files.map(file => {
+            if(file.contentType ==="image/jpeg" || file.contentType === "image/png"){
+              file.isImage = true;
+            } else {
+              file.isImage = false;
+            }
+          });
+        //   console.log(files);
+          for(var i=files.length-1; i >= 0; i--){
+              console.log('Image --- Numbe -----' + i);
+              console.log(files[i]);
+              if(files[i].isImage){
+                  return res.render('home', {file: files[i]});
+              }
+          }
+          res.render('home', {files: files});
+        }
+    });
 });
+// old version
+// router.get('/', function(req, res){
+    // res.render('home');
+// });
+
+
 
 // setting up local user registration
 function userSignUp(username, password){

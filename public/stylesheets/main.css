@@ -532,6 +532,10 @@ section {
   font-size: 30px;
 }
 
+.edit-profile-pic-form {
+    display: none;
+}
+
 
 /*#login-form-style {*/
 /*    width: 200px;*/

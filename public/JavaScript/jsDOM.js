@@ -9,7 +9,7 @@ jQuery(document).ready(function($){
     
     var navItems = document.querySelectorAll('.nav-item');
     
-    console.log(navItems.length);
+    // console.log(navItems.length);
     navItems.forEach(function(navItem){
         navItem.classList.remove('active');
         
@@ -22,6 +22,14 @@ jQuery(document).ready(function($){
         
         // console.log(navItem.getAttribute("href"));
         // console.log(window.location.pathname)
+    });
+    
+    // showing the add profile image form
+    var profilePicButton = document.querySelector("#edit-profile-pic");
+    var profilePicForm = document.querySelector(".edit-profile-pic-form");
+    
+    profilePicButton.addEventListener('click', function(){
+        profilePicForm.classList.toggle("edit-profile-pic-form");
     });
     
     // This works now, thank you //
