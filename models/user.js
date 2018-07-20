@@ -7,4 +7,6 @@ var userSchema = new mongoose.Schema({
 });
 userSchema.plugin(passportLocalMongoose); 
 
+// console.log('print something');
+
 module.exports = mongoose.model('User', userSchema);

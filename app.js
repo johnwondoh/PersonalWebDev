@@ -5,6 +5,7 @@ var express         = require("express"),
     Publication     = require("./models/publications"),
     Project         = require("./models/projects"),
     User            = require("./models/user"),
+    upload          = require("./models/storage"),
     seedDB          = require("./seed"),
     expressSanitizer = require("express-sanitizer"),
     passport        = require("passport"),
@@ -21,19 +22,15 @@ var path              = require("path"),
     Grid              = require("gridfs-stream");
 
 
-/* adding routes */ 
-var researchRoutes = require("./routes/research");
-var projectRoutes = require("./routes/project");
-var experienceRoutes = require("./routes/experience");
-var awardRoutes = require("./routes/award");
-var indexRoutes = require("./routes/index");
+
 
 
 /* old connection approach*/
-// mongoose.connect('mongodb://localhost/blogDB');
+mongoose.connect('mongodb://localhost/blogDB');
 
 /* -- mongo connection set -- new way -- also adding gridfs --*/ 
 // Mongo URI
+// console.log('mongo uri');
 const mongoURI = 'mongodb://localhost/blogDB'; 
 // Create mongo connection
 const conn = mongoose.createConnection(mongoURI);
@@ -89,32 +86,9 @@ app.use(function(req, res, next){
 
 
 
-//create storage engine
-const  storage = new GridFsStorage({
-  url: mongoURI,
-  file: (req, file) => {
-    return new Promise((resolve, reject) => {
-      crypto.randomBytes(16, (err, buf) => {
-        if (err) {
-          return reject(err);
-        }
-        const filename = buf.toString('hex') + path.extname(file.originalname);
-        const fileInfo = {
-          filename: filename,
-          bucketName: 'uploads'
-        };
-        resolve(fileInfo);
-      });
-    });
-  }
-});
-const upload = multer({ storage });
 
 
-app.post('/upload', upload.single('file'), (req, res)=>{
-    // res.json({file: req.file});
-    res.redirect('/');
-});
+
 
 // @route GET /image/:filename
 // @desc Display image with the given filename
@@ -125,13 +99,18 @@ app.get('/image/:filename', (req, res)=>{
         err: 'No file exists'
       });
     }
+    // console.log(file.contentType);
     // check if file is an image
-    if(file.contentType === "image/jpeg" || file.contentType === "image/png "){
+    if(file.contentType === "image/jpeg" || file.contentType === "image/png"|| file.contentType === 'image/jpeg'){
       const readstream = gfs.createReadStream(file.filename);
       readstream.pipe(res);
     } else {
+      // var valueType = typeof file.contentType;
       res.status(404).json({
-        err: 'Not an image'
+        err: 'Not an image',
+        type: file.contentType,
+        typeOf: typeof file.contentType,
+        imgDetails: file
       });
     }
   });
@@ -144,6 +123,14 @@ app.get('/image/:filename', (req, res)=>{
 //     // res.json({file: req.file});
 //     res.redirect('/');
 // })
+
+
+/* adding routes */ 
+var researchRoutes = require("./routes/research");
+var projectRoutes = require("./routes/project");
+var experienceRoutes = require("./routes/experience");
+var awardRoutes = require("./routes/award");
+var indexRoutes = require("./routes/index");
 
 
 app.use("/", researchRoutes);

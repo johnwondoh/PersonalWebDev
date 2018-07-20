@@ -37,9 +37,9 @@
                             <!--<p class="card-text showAbstract hideAbstract"></p>-->
                             <hr class="style-two">
                             <div class="float-right">
-                                <span class="card-subtitle text-muted">Get access: </span>
-                                <a href="<%=publication.doi%>" class="card-link">DOI</a>
-                                <a href="<%=publication.url%>" class="card-link">URL</a>
+                                <span class="card-subtitle text-muted"><small>Get access: </small></span>
+                                <a href="<%=publication.url%>" class="card-link"><small>link</small></a>
+                                <span class="text-muted"><span class="text-dark"> ||</span> <small>DOI: <%=publication.doi%></small></span>
                             </div>
                             
                             <% if(currentUser){%>

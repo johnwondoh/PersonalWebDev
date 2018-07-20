@@ -1,0 +1,24 @@
+<% include ../partials/header %>
+
+    <div class="container mb-3">
+            <div class="row">
+                <div class="project-images col-sm-12 m-auto">
+                    <h1 class="text-center display-my-4 display-4"><%= project.title %> Photos</h1>
+                    <hr>
+                    <% if (project.images){ %>
+                        <% project.images.forEach(function(image){ %>
+                            <div class="card card-body mb-3">
+                                <img src="/image/<%=image%>">
+                                <% if(currentUser){%>
+                                    <form action="/projects/<%=project._id%>/images/<%=image%>?_method=DELETE" method="POST">
+                                        <button class="btn btn-danger btn-block mt-4">Delete</button>
+                                    </form>
+                                <% } %>
+                            </div>
+                        <% })%>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+    
+<% include ../partials/footer %>

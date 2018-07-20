@@ -45,6 +45,7 @@
                         <a class="nav-item nav-link" href="/research">Research</a>
                         <a class="nav-item nav-link" href="/experience">Experience</a>
                         <a class="nav-item nav-link" href="/awards">Awards</a>
+                        <!--<a class="nav-item nav-link" href="/image">Images</a>-->
                         <!-- add edu-->
                         <!--add misc for weather time, and other stuff-->
                         <!--<a class="nav-item nav-link disabled" href="#">Disabled</a>-->
@@ -61,11 +62,15 @@
                                 <!--</div>-->
                                 <% if(!currentUser){ %>
                                     <div class="col">
-                                        <a class="btn btn-outline-success my-2 my-sm-0 btn-sm" href="/login">Login</a>
+                                        <a class="btn btn-outline-warning my-2 my-sm-0 btn-sm" href="/login">
+                                            <i class="fas fa-sign-in-alt"></i>
+                                        </a>
                                     </div>
                                 <% } else { %>
                                     <div class="col">
-                                        <a class="btn btn-outline-danger my-2 my-sm-0 btn-sm" href="/logout">Logout</a>
+                                        <a class="btn btn-outline-danger my-2 my-sm-0 btn-sm" href="/logout">
+                                            <i class="fas fa-sign-out-alt"></i>
+                                        </a>
                                     </div>
                                 <% } %>
                             </div>

@@ -140,7 +140,7 @@ a.fab {
     /*border: 2px red solid;*/
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border: 1px solid #bdbfc1;
-    border-right-color: blue;
+    border-right-color: #111111;
     border-right-style: inset;
     border-right-width: 0.5rem;
 }
@@ -215,7 +215,7 @@ div:hover span.socialsFade{
 
 /*--- project show page image max height ---*/
 .card-img-top{
-    max-height: 300px;
+    max-height: 500px;
     object-fit: cover;
 }
 
@@ -536,7 +536,11 @@ section {
     display: none;
 }
 
+.images {
+    width: 400px;
+    margin: 0 auto;
+}
 
-/*#login-form-style {*/
-/*    width: 200px;*/
-/*}*/
+.project-images img {
+    width: 100%;
+}

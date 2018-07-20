@@ -10,7 +10,7 @@ router.get('/research', function(req, res){
             console.log(err);
         } else {
             // console.log(publications);
-            res.render('research/research', {publicationData: publications});
+            res.render('research/research', {publications: publications});
         }
     });
 });

@@ -39,10 +39,16 @@
             <!--<a class="btn btn-outline-secondary" href="#">Coming soon</a>-->
         </div>
         <div class="rounded">
-            <img class="rounded-img" src="https://images.unsplash.com/photo-1508474384266-8e862a68a650?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=9b85d3ede1c655400367b4d4700dbb5d&auto=format&fit=crop&w=1950&q=80">
             <!--<img class="rounded-img" src="https://images.unsplash.com/photo-1530904655194-92d55d4a006b?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=5df1085d0c8717fd58e2858fab7640e8&auto=format&fit=crop&w=934&q=80">-->
             <!--<p>Lorem ipsum</p>-->
-            <% if(!currentUser){ %>
+            <% if (file){ %>
+                <img class="rounded-img" src="image/<%=file.filename%>">
+            <% } else { %>
+                <img class="rounded-img" src="https://images.unsplash.com/photo-1508474384266-8e862a68a650?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=9b85d3ede1c655400367b4d4700dbb5d&auto=format&fit=crop&w=1950&q=80">
+                <!--<p>No files to show</p>-->
+            <% } %>
+            
+            <% if(currentUser){ %>
                 <a id="edit-profile-pic"> <i class="fas fa-edit"></i> </i></a>
             <% }%>
             <div>
@@ -54,18 +60,7 @@
                     <input type="submit" value="Submit" class="btn btn-primary btn-block">
                 </form>
             </div>
-            <hr>
-            <% if (file){ %>
-                    <div class="card card-body mb-3">
-                            <img src="image/<%=file.filename%>">
-                            <p>image/<%=file.filename%></p>
-                        <form action="/files/<%=file._id%>?_method=DELETE" method="POST">
-                            <button class="btn btn-danger btn-block mt-4">Delete</button>
-                        </form>
-                    </div>
-            <% } else { %>
-                <p>No files to show</p>
-            <% } %>
+            <!--<hr>-->
         </div>
         <!--<div class="product-device box-shadow d-none d-md-block"></div>-->
         <!--<div class="product-device product-device-2 box-shadow d-none d-md-block"></div>-->

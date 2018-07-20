@@ -44,8 +44,8 @@ function buildString(stringArray){
     return newString;
 }
 
-console.log('building string');
-var strArray = ['John', 'Wondoh', 'Kofi'];
-console.log(buildString(strArray));
+// console.log('building string');
+// var strArray = ['John', 'Wondoh', 'Kofi'];
+// console.log(buildString(strArray));
 
 module.exports = seedDB;

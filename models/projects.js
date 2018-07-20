@@ -3,7 +3,11 @@ var mongoose = require("mongoose");
 var projectSchema = new mongoose.Schema({
     title: String,
     content: String,
-    image: String,
+    // image: String,
+    images: [String],
+    // images: [{
+    //     image: String
+    // }],
     status: String,
     hide: String,
     summary: String,

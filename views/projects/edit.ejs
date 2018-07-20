@@ -1,7 +1,7 @@
 <% include ../partials/header %>
 
     <div class="container">
-        <form class="form-formatting" action="/projects/<%=project._id%>?_method=PUT" method="POST">
+        <form class="form-formatting" action="/projects/<%=project._id%>?_method=PUT" method="POST" enctype="multipart/form-data">
             <!-- Project Title -->
             <div class="form-group">
                 <input type="text" class="form-control-file" placeholder="Project Title" name="project[title]" value="<%=project.title%>">
@@ -26,13 +26,13 @@
                 <!--<p class="center-text"><em>Add image from your computer or with a url</em></p>-->
                 <div class="form-group row">
                     <!-- from your computer -->
-                    <!--<div class="col-md-4">-->
-                    <!--    <input type="file" class="form-control-file" placeholder="something here">-->
-                    <!--</div>-->
-                    <!-- from a link -->
-                    <div class="col-md-7">
-                        <input type="text" class="form-control-file" placeholder="Paste image url here" name="project[image]" value="<%=project.image%>">
+                    <div class="col-md-4">
+                        <input type="file" class="form-control-file" name="image" accept="image/*" placeholder="something here">
                     </div>
+                    <!-- from a link -->
+                    <!--<div class="col-md-7">-->
+                    <!--    <input type="text" class="form-control-file" placeholder="Paste image url here" name="project[image]" value="<%=project.image%>">-->
+                    <!--</div>-->
                     <!-- Project status-->
                     <div class="col-md-4">
                         <!--<labe class="col-form-label" for="projectStatus">Project Status <span class="small">(between 0 and 100)</span></labe>-->
