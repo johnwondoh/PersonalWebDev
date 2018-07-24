@@ -27,7 +27,6 @@ var path              = require("path"),
 
 /* old connection approach*/
 // mongoose.connect('mongodb://localhost/blogDB');
-// mongoose.connect('mongodb://jwondoh:jay1000@ds145951.mlab.com:45951/jw-blog-database');
 mongoose.connect(process.env.BLOGDATATBASEURL);
 
 /* -- mongo connection set -- new way -- also adding gridfs --*/ 
@@ -35,7 +34,6 @@ mongoose.connect(process.env.BLOGDATATBASEURL);
 // console.log('mongo uri');
 // const mongoURI = 'mongodb://localhost/blogDB'; 
 const mongoURI = process.env.BLOGDATATBASEURL;
-// const mongoURI = 'mongodb://jwondoh:jay1000@ds145951.mlab.com:45951/jw-blog-database';
 // console.log(process.env.BLOGDATATBASEURL);
 // Create mongo connection
 const conn = mongoose.createConnection(mongoURI);
