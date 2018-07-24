@@ -26,12 +26,17 @@ var path              = require("path"),
 
 
 /* old connection approach*/
-mongoose.connect('mongodb://localhost/blogDB');
+// mongoose.connect('mongodb://localhost/blogDB');
+// mongoose.connect('mongodb://jwondoh:jay1000@ds145951.mlab.com:45951/jw-blog-database');
+mongoose.connect(process.env.BLOGDATATBASEURL);
 
 /* -- mongo connection set -- new way -- also adding gridfs --*/ 
 // Mongo URI
 // console.log('mongo uri');
-const mongoURI = 'mongodb://localhost/blogDB'; 
+// const mongoURI = 'mongodb://localhost/blogDB'; 
+const mongoURI = process.env.BLOGDATATBASEURL;
+// const mongoURI = 'mongodb://jwondoh:jay1000@ds145951.mlab.com:45951/jw-blog-database';
+// console.log(process.env.BLOGDATATBASEURL);
 // Create mongo connection
 const conn = mongoose.createConnection(mongoURI);
 // init gfs
@@ -49,7 +54,8 @@ app.use(bodyParser.json());
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.set('view engine', 'ejs');
-app.use(express.static('public'));
+// app.use(express.static('public'));
+app.use(express.static(__dirname + "/public")); 
 app.use(methodOverride("_method"));
 // Adds my publications to the database - only required once
 // seedDB();

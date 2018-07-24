@@ -21,9 +21,14 @@
     }
     
     .container {
-        padding: 0;
+        padding: 1px;
+        margin: 2px;
         max-width: 80rem;
         /*width: 800px;*/
+    }
+    
+    .programming .container {
+        padding: 20px;
     }
     
     .rounded {
@@ -40,15 +45,15 @@
     
     .p-lg-5 .text-center {
         /*margin-bottom: 5px;*/
-        padding: 0;
+        padding: 2px;
         text-align: center;
     }
     
-    .my-5 .text-center {
-        margin: 0;
-        padding: 0;
-        text-align: center;
-    }
+    /*.my-5 .text-center {*/
+    /*    margin: 0;*/
+    /*    padding: 0;*/
+    /*    text-align: center;*/
+    /*}*/
     
     .form-formatting {
         /*width: 50em;*/
@@ -63,6 +68,10 @@
     .card-img-top{
         max-height: 450px;
         object-fit: cover;
+    }
+    
+    .container-larger {
+        margin: 40px auto;
     }
 }
 
@@ -123,5 +132,17 @@
         max-height: 400px;
         object-fit: cover;
     }
+    
+    .jumbotron-try {
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+    
+    .footer {
+        position: static;
+        margin-top: 10px;
+    }
+    
+    /*.clear { clear: both; height: 10px; }*/
 
 }

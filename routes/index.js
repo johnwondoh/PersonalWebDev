@@ -25,7 +25,8 @@ var mongoose = require("mongoose"),
     Grid              = require("gridfs-stream");
     
 // Mongo URI
-const mongoURI = 'mongodb://localhost/blogDB'; 
+// const mongoURI = 'mongodb://localhost/blogDB'; 
+const mongoURI = process.env.BLOGDATATBASEURL;
 // Create mongo connection
 const conn = mongoose.createConnection(mongoURI);
 
@@ -43,42 +44,66 @@ conn.once('open', () => {
 /********* Routes *************/
 // Home page route
 router.get('/', function(req, res){
-    // res.render('home');
-    gfs.files.find().toArray((err, files)=>{
-        //check if files exist
-        if(!files || files.length === 0){
-          res.render('home', {file: false});
+  var photo;
+  User.find({}, function(err, foundUsers){
+    if(err){
+      console.log(err);
+    } else {
+      if(foundUsers.length !== 0){
+        if(foundUsers[0].photo !=null){
+          photo = foundUsers[0].photo;
         } else {
-          // map is a high level JS array -- you can learn more about this
-          files.map(file => {
-            if(file.contentType ==="image/jpeg" || file.contentType === "image/png"){
-              file.isImage = true;
-            } else {
-              file.isImage = false;
-            }
-          });
-        //   console.log(files);
-          for(var i=files.length-1; i >= 0; i--){
-            //   console.log('Image --- Numbe -----' + i);
-            //   console.log(files[i]);
-              if(files[i].isImage){
-                  return res.render('home', {file: files[i]});
-              }
-          }
-          res.render('home', {files: files});
+          photo = false;
         }
-    });
+      }
+      return res.render('home', {photo: photo});
+    }
+  });
 });
 // old version
 // router.get('/', function(req, res){
-    // res.render('home');
+//     gfs.files.find().toArray((err, files)=>{
+//         //check if files exist
+//         if(!files || files.length === 0){
+//           res.render('home', {file: false});
+//         } else {
+//           // map is a high level JS array -- you can learn more about this
+//           files.map(file => {
+//             if(file.contentType ==="image/jpeg" || file.contentType === "image/png"){
+//               file.isImage = true;
+//             } else {
+//               file.isImage = false;
+//             }
+//           });
+//           for(var i=files.length-1; i >= 0; i--){
+//               if(files[i].isImage){
+//                   return res.render('home', {file: files[i]});
+//               }
+//           }
+//           res.render('home', {files: files});
+//         }
+//     });
 // });
+
 
 // profile pictutre post
 router.post('/upload', upload.single('file'), (req, res)=>{
-    // res.json({file: req.file});
-    // console.log(req.file);
-    res.redirect('/');
+  // res.json({file: req.file});
+  // console.log(req.file);
+  if(req.user.photo){
+    console.log('removing old photo')
+    gfs.remove({_id: req.user.photo, root: 'uploads'}, (err, gridStore)=>{
+        if(err){
+          console.log(err);
+            // return res.status(404).json({
+            // err: err
+            // });
+        } 
+    })
+  }
+  req.user.photo = req.file.filename;
+  req.user.save();
+  res.redirect('/');
 });
 
 // setting up local user registration
@@ -99,7 +124,7 @@ function userSignUp(username, password){
     });
 }
 // console.log('We are in the index route');
-// userSignUp('johnwondoh', 'jay1000');
+// userSignUp('johnwondoh', 'blaque2010');
 // console.log('after sign up' );
 
 // login route

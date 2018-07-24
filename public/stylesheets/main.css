@@ -38,7 +38,7 @@ p {
 /*.card*/
 
 .formate-aboutMe{
-    margin-bottom: 0;
+    /*margin-bottom: 0;*/
     padding: 0;
     text-align: center;
 }
@@ -46,12 +46,18 @@ p {
 .jumbotron-try {
     padding: 15px 15px 0;
     /*background-color: white;*/
-    box-shadow: 0 1px 3px rgba(34, 25, 25, 0.4);
+    /*background-color: #7FDBFF;*/
+    /*background-color: #001f3f;*/
+    background-image: linear-gradient(to right, rgba(230, 250, 255,0.5), rgba(230, 255, 250,0.5)), url("../images/circles-and-roundabouts.png");
+    background-color:  #f0f0f5; 
     -moz-box-shadow: 0 1px 2px rgba(34,25,25,0.4);
     -webkit-box-shadow: 0 1px 3px rgba(34, 25, 25, 0.4);
-    background-color: #f0f0f5;
-    
+    box-shadow: 0 1px 3px rgba(34, 25, 25, 0.4);
+    padding-left: 15%;
+    padding-right: 15%;
+    padding-bottom: 1%;
     text-align: center;
+    margin-bottom:5px;
 }
 
 .jumbotron-title {
@@ -122,6 +128,7 @@ a.fab {
     font-weight: 400;
     /*font-style: italic;*/
     font-size: 15px;
+    margin-bottom: 0;
     text-align: right;
 }
 
@@ -152,7 +159,7 @@ a.fab {
 	/*height: 40px;*/
 	/*vertical-align: middle;*/
 	/*margin-right: 20px;*/
-	font-size: smaller;
+	font-size: 12px;
 	text-align: center;
 	color: white;
 	width: 0;
@@ -272,8 +279,30 @@ hr.style-two {
 }
 
 .home-tools {
-    background-color: #e6f3ff; /* #cce6ff; */
-    color: #000;   
+    /*z-index: 1;*/
+    
+    background-image: linear-gradient(rgba(153, 204, 255,0.2), rgba(153, 204, 255,0.4)), url("../images/leaves-pattern.png");
+    color: #000;
+    /* Fallback for web browsers that don't support RGBa */
+    /*background-color: rgb(153, 204, 255);*/
+    /* RGBa with 0.6 opacity */
+    
+    /*background-color: rgba(153, 204, 255, 0.9);*/
+    
+    /* For IE 5.5 - 7*/
+    /*filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);*/
+    /* For IE 8*/
+    /*-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";*/
+
+    /*background-color: #e6f3ff; */
+      
+}
+
+.cs-tools {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border: 1px solid #bdbfc1;
+    padding: 30px;
+    margin: 20px;
 }
 
 .experience-categories {
@@ -387,7 +416,7 @@ hr.hr-style {
 .home-p-style{
     font-family: 'Cardo', serif;
     font-weight: 400;
-    font-size: 18px;
+    font-size: 17px;
     font-style: normal;
 }
 
@@ -500,8 +529,8 @@ section {
 
 .p-award {
     font-style: normal;
-    font-size: 17px;
-    line-height: 25px;
+    font-size: 15px;
+    line-height: 23px;
     /*padding-left: 20px;*/
 }
 /*.section{ padding: 0 0 50px; }*/
@@ -544,3 +573,81 @@ section {
 .project-images img {
     width: 100%;
 }
+
+.experience img {
+    width: 50%;
+    margin-left:  25%;
+}
+
+.scroll-box {
+    z-index: 3;
+    position: fixed;
+    /*border: 1px solid red;*/
+    margin-left: 1%;
+    margin-top: 3%;
+    width: 100px;
+    padding: 0;
+    
+    -webkit-border-radius:4px;
+    -moz-border-radius:4px;
+    border-radius: 4px;
+    box-shadow:inset 0 1px 1px rgba(0, 0, 0, .05);
+    -webkit-box-shadow:inset 0 1px 1px rgba(0, 0, 0, .05);
+    -moz-box-shadow:inset 0 1px 1px rgba(0, 0, 0, .05);
+}
+
+/*.scroll-box .btn-secondary {*/
+    /*height: 30px;*/
+    /*background-color: red;*/
+    /*-webkit-border-radius:15px;*/
+    /*-moz-border-radius:15px;*/
+    /*border-radius: 15px;*/
+    /*-webkit-border-radius:0;*/
+    /*-moz-border-radius:0;*/
+    /*border-radius: 0;*/
+/*}*/
+
+.myNavCollapseElement {
+    font-size: 9px;
+}
+
+.nav-lin {
+    padding-left: 5px;
+}
+
+
+/*button */
+.scroll-box .btn-secondary {
+    background-color: #0074D9;
+    border: none;
+    height: 26px;
+	text-transform: uppercase;
+	/*height: 100%;*/
+	/*font-weight: 700;*/
+	letter-spacing: 1px;
+	outline: none;
+}
+
+/*.btn-secondary:focus {*/
+/*  outline: none;*/
+/*}*/
+
+.btn-secondary:focus,.btn-secondary:active:focus,.btn-secondary.active:focus,
+.btn-secondary.focus,.btn-secondary:active.focus,.btn-secondary.active.focus {
+    outline: none;
+    box-shadow:none;
+}
+
+/*button:hover, .selected {*/
+/*	color: white;*/
+/*	background-color: steelblue;*/
+/*}*/
+
+/*.scroll-box nav a:hover {*/
+/*    style: none;*/
+/*} */
+
+/*.home-tools {*/
+/*    background-image: linear-gradient(rgba(153, 204, 255,0.2), rgba(153, 204, 255,0.4)), url("../images/circles-and-roundabouts.png");*/
+/*    color: #000;*/
+/*}*/

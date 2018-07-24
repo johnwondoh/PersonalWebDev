@@ -60,16 +60,28 @@
                                 <!--<div class="col">-->
                                 <!--    <input class="form-control form-control-sm" type="password" placeholder="Password" aria-label="Password">-->
                                 <!--</div>-->
+                                <!--<div class="col">-->
+                                <!--    <a class="nav-item nav-link" >-->
+                                        <!--Contact me-->
+                                <!--        <i class="far fa-envelope align-middle"></i>-->
+                                <!--    </a>-->
+                                <!--</div>-->
+                                <!--<div class="col">-->
+                                <!--    <a class="nav-item nav-link text-white">-->
+                                <!--        <i class="fas fa-phone align-middle"></i>-->
+                                <!--    </a>-->
+                                <!--</div>-->
                                 <% if(!currentUser){ %>
                                     <div class="col">
-                                        <a class="btn btn-outline-warning my-2 my-sm-0 btn-sm" href="/login">
-                                            <i class="fas fa-sign-in-alt"></i>
+                                        <a class="btn btn-outline-primary text-muted my-2 my-sm-0 btn-sm" href="/login">
+                                            <i class="fas fa-user"></i> Login
                                         </a>
                                     </div>
                                 <% } else { %>
                                     <div class="col">
                                         <a class="btn btn-outline-danger my-2 my-sm-0 btn-sm" href="/logout">
-                                            <i class="fas fa-sign-out-alt"></i>
+                                            logout 
+                                            <!--<i class="fas fa-sign-out-alt"></i>-->
                                         </a>
                                     </div>
                                 <% } %>

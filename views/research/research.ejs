@@ -2,9 +2,13 @@
     <div class="jumbotron jumbotron-fluid jumbotron-try">
         <!--<h1 class="page-header">Research Page</h1>-->
         <!--<p>Some important content here describing the page</p>-->
-        <h1 class="display-4">Research Contributions</h1>
-        <p class="lead">
-            This is a modified jumbotron that occupies the entire horizontal space of its parent.
+        <h1 class="jumbotron-title">Research Contributions</h1>
+        <!--<h1 class="display-4">Research Contributions</h1>-->
+        <!--<p class="lead">-->
+        <p class="home-p-style">
+            Here, I show my published research contributions together with their abstracts. 
+            I also provide the conference each paper was published in and their respective ranks. 
+            Links are also provided for accessing the papers. You can email me to request a copy of the paper. 
         </p>
     </div>
     <div class="container-fluid publications">
@@ -14,51 +18,51 @@
             </div>
         <% } %>
         <!-- Cards showing research activities -- shoule iterate and automaticall generate them -->
-        <% publicationData.forEach( function(publication){ %>
+        <% for(var i=publications.length-1; i>=0; i--){ %>
         <div class="container">
             <div class="card">
                 <!--<img class="card-img-left img-thumbnail" src="https://images.unsplash.com/photo-1525856326341-8adeed4c8b8b?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=664eca9d03a5be8e34786a5222862411&auto=format&fit=crop&w=1965&q=80" alt="Card image cap">-->
                 <div class="card-body">
                     <div class="row">
                         <div class="col-lg-10">
-                            <h5 class="card-title"><%= publication.title %></h5>
+                            <h5 class="card-title"><%= publications[i].title %></h5>
                             <h6 class="card-subtitle mb-2">
-                                <%= publication.authors %>
+                                <%= publications[i].authors %>
                             </h6>
                             <h6 class="card-subtitle mb-2 text-muted">
-                                <%= publication.venue %> | <%= publication.year %> 
+                                <%= publications[i].venue %> | <%= publications[i].year %> 
                             </h6>
                             <!--<div>-->
                             <!--    <button type="button" class="slideDownBtn btn btn-info btn-sm">View Abstract</button>-->
                             <!--</div>-->
                             <!--slide to show abstract here-->
                             <h6 class="abstract-title">Abstract</h6>
-                            <p class="card-text ab-align"><%=publication.abstract%></p>
+                            <p class="card-text ab-align"><%=publications[i].abstract%></p>
                             <!--<p class="card-text showAbstract hideAbstract"></p>-->
                             <hr class="style-two">
                             <div class="float-right">
                                 <span class="card-subtitle text-muted"><small>Get access: </small></span>
-                                <a href="<%=publication.url%>" class="card-link"><small>link</small></a>
-                                <span class="text-muted"><span class="text-dark"> ||</span> <small>DOI: <%=publication.doi%></small></span>
+                                <a href="<%=publications[i].url%>" class="card-link"><small>link</small></a>
+                                <span class="text-muted"><span class="text-dark"> ||</span> <small>DOI: <%=publications[i].doi%></small></span>
                             </div>
                             
                             <% if(currentUser){%>
                                 <div>
-                                    <form class="delete-form" action="/research/<%=publication._id%>?_method=DELETE" method="POST">
-                                        <a href="/research/<%=publication._id%>/edit" class="btn btn-warning btn-sm">Edit</a>
+                                    <form class="delete-form" action="/research/<%=publications[i]._id%>?_method=DELETE" method="POST">
+                                        <a href="/research/<%=publications[i]._id%>/edit" class="btn btn-warning btn-sm">Edit</a>
                                         <button class="btn btn-danger btn-sm">Delete</button>
                                     </form>
                                 </div>
                             <% } %>
                         </div>
                         <div class="col-lg-2 rank-area">
-                            <h6>Core Ranked <%=publication.rank%></h4>
+                            <h6>Core Ranked <%=publications[i].rank%></h4>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    <% }) %>
+    <% } %>
     </div>
 
 

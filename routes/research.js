@@ -10,10 +10,42 @@ router.get('/research', function(req, res){
             console.log(err);
         } else {
             // console.log(publications);
-            res.render('research/research', {publications: publications});
+            res.render('research/research', {publications: sortObjectItems(publications)});
         }
     });
 });
+
+
+
+
+// console.log(publicationArray[0].year);
+
+// console.log(sortObjectItems(publicationArray));
+function sortObjectItems(objects){
+    var newArray = [];
+    // iterating to sort
+    for(var i=0; i<objects.length; i++){
+        if(!(newArray.includes(objects[i]))){
+            if(i+1 >= objects.length){
+                newArray.push(objects[i]);
+            } else if(Number(objects[i].year) > Number(objects[i+1].year)) {
+                newArray.push(objects[i+1]);
+                newArray.push(objects[i]);
+            } else if(Number(objects[i].year) <= Number(objects[i+1].year)) {
+                newArray.push(objects[i]);
+            }
+        }
+    }
+    // iteration to check if it sorted
+    for(var j=0; j<newArray.length; j++){
+        if(!(j+1>=newArray.length)){
+            if(Number(newArray[j].year) > Number(newArray[j+1].year)){
+                return sortObjectItems(newArray);
+            } 
+        }
+    }
+    return newArray;
+}
 
 /****** CREATE and EDIT research entries ******/
 // new page for entering new research item

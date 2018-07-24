@@ -21,7 +21,8 @@ var path              = require("path"),
     GridFsStorage     = require("multer-gridfs-storage"),
     Grid              = require("gridfs-stream");
     
-const mongoURI = 'mongodb://localhost/blogDB'; 
+// const mongoURI = 'mongodb://localhost/blogDB'; 
+const mongoURI = process.env.BLOGDATATBASEURL;
 // Create mongo connection
 const conn = mongoose.createConnection(mongoURI);
 // init gfs
@@ -62,12 +63,13 @@ router.post("/projects", middleware.isLoggedIn, upload.single('image'), function
     // newProject.image = req.file.filename;
     // console.log(newProject);
     // newProject.images.push(req.file.filename);
-    newProject.content = req.sanitize(newProject.content); 
+    // newProject.content = req.sanitize(newProject.content); 
     Project.create(newProject, function(err, createdProject){
         if(err){
             console.log(err);
         } else {
             // console.log(createdProject);
+            // if()
             createdProject.images.push(req.file.filename);
             createdProject.save();
             // console.log(createdProject);
@@ -109,13 +111,16 @@ router.get('/projects/:id/edit', middleware.isLoggedIn, function(req, res) {
 router.put('/projects/:id', middleware.isLoggedIn, upload.single('image'), function(req, res){
     var edittedProject = req.body.project;
     // console.log(edittedProject);
-    edittedProject.content = req.sanitize(edittedProject.content); 
+    // edittedProject.content = req.sanitize(edittedProject.content); 
     Project.findByIdAndUpdate(req.params.id, edittedProject, function(err, updatedProject){
         if(err){
             console.log(err);
         } else {
-            updatedProject.images.push(req.file.filename);
-            updatedProject.save();
+            // console.log(req.file.filename);
+            if(req.file!=null){
+                updatedProject.images.push(req.file.filename);
+                updatedProject.save();
+            }
             res.redirect('/projects/'+req.params.id);
         }
     });

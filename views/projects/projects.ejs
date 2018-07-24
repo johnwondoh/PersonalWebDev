@@ -2,9 +2,12 @@
     <div class="jumbotron jumbotron-fluid jumbotron-try">
         <!--<h1 class="page-header">Research Page</h1>-->
         <!--<p>Some important content here describing the page</p>-->
-        <h1 class="jumbotron-title">Research Contributions</h1>
+        <h1 class="jumbotron-title">Relevant Projects</h1>
         <p class="home-p-style">
-            This is a modified jumbotron that occupies the entire horizontal space of its parent.
+            We show some of the projects we have worked on. 
+            Under each project, we discuss briefly how it works and also include required 
+            libraries and a link to the repository containing the code. If the project has 
+            been deployed, we also provide a link to the associated website.
         </p>
     </div>
     
@@ -15,32 +18,32 @@
         </div>
     <% } %>
     
-    <% projects.forEach(function(project){%>
+    <% for(var i=projects.length-1; i >=0; i--){ %>
         <div class="container">
             <div class="card">
-                <!--<h5 class="card-header"><%= project.title %></h5>-->
+                <!--<h5 class="card-header"><%= projects[i].title %></h5>-->
                 <div class="card-body">
                     <div class="row">
                         <div class="col-sm-2">
-                            <img class="card-img small-img" src="/image/<%=project.images[0]%>">
+                            <img class="card-img small-img" src="/image/<%=projects[i].images[0]%>">
                         </div>
                         <div class="col-sm-10">
                             <!--<h5 class="card-title">Special title treatment</h5>-->
-                            <h5 class="card-title"><%= project.title %></h5>
-                            <p class="card-text"><%- project.summary %></p>
-                            <!--<p class="card-subtitle mb-2 text-muted">Updated on: <%= project.created %></p>-->
+                            <h5 class="card-title"><%= projects[i].title %></h5>
+                            <p class="card-text"><%- projects[i].summary %></p>
+                            <!--<p class="card-subtitle mb-2 text-muted">Updated on: <%= projects[i].created %></p>-->
                             <h6 class="card-subtitle mb-2 text-muted">
-                                Updated on: <%= project.created.toDateString() %> 
+                                Updated on: <%= projects[i].created.toDateString() %> 
                             </h6>
-                            <a href="/projects/<%=project._id%>" class="btn btn-outline-primary btn-sm">View Project <i class="fas fa-chevron-right"></i></a>
+                            <a href="/projects/<%=projects[i]._id%>" class="btn btn-outline-primary btn-sm">View Project <i class="fas fa-chevron-right"></i></a>
                         </div>
                     </div>
                 </div>
                 <!--<div class="card-footer text-muted">-->
-                <!--    Updated on: <%= project.created %>-->
+                <!--    Updated on: <%= projects[i].created %>-->
                 <!--</div>-->
             </div>
         </div>
-    <% })%>
+    <% } %>
 
 <% include ../partials/footer %>
