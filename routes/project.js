@@ -22,8 +22,9 @@ var path              = require("path"),
     Grid              = require("gridfs-stream");
     
 // const mongoURI = 'mongodb://localhost/blogDB'; 
+
 const mongoURI = process.env.BLOGDATATBASEURL;
-console.log(mongoURI);
+// console.log(mongoURI);
 // Create mongo connection
 const conn = mongoose.createConnection(mongoURI);
 // init gfs

@@ -10,7 +10,10 @@ router.get('/research', function(req, res){
             console.log(err);
         } else {
             // console.log(publications);
-            res.render('research/research', {publications: sortObjectItems(publications)});
+            // console.log(publications.length);
+            var sortedPublications = sortObjectItems(publications);
+            // console.log(sortedPublications.length);
+            res.render('research/research', {publications: sortedPublications});
         }
     });
 });
@@ -24,27 +27,36 @@ router.get('/research', function(req, res){
 function sortObjectItems(objects){
     var newArray = [];
     // iterating to sort
+    var temp;
     for(var i=0; i<objects.length; i++){
-        if(!(newArray.includes(objects[i]))){
-            if(i+1 >= objects.length){
+        if(i+1 >= objects.length){
                 newArray.push(objects[i]);
-            } else if(Number(objects[i].year) > Number(objects[i+1].year)) {
-                newArray.push(objects[i+1]);
-                newArray.push(objects[i]);
-            } else if(Number(objects[i].year) <= Number(objects[i+1].year)) {
-                newArray.push(objects[i]);
-            }
-        }
+        } else if(Number(objects[i].year) > Number(objects[i+1].year)) {
+            temp = objects[i];
+            objects[i] = objects[i+1];
+            objects[i+1] = temp;
+        } 
     }
+    //     if(!(newArray.includes(objects[i]))){
+    //         if(i+1 >= objects.length){
+    //             newArray.push(objects[i]);
+    //         } else if(Number(objects[i].year) > Number(objects[i+1].year)) {
+    //             newArray.push(objects[i+1]);
+    //             newArray.push(objects[i]);
+    //         } else if(Number(objects[i].year) <= Number(objects[i+1].year)) {
+    //             newArray.push(objects[i]);
+    //         }
+    //     }
+    // }
     // iteration to check if it sorted
-    for(var j=0; j<newArray.length; j++){
-        if(!(j+1>=newArray.length)){
-            if(Number(newArray[j].year) > Number(newArray[j+1].year)){
-                return sortObjectItems(newArray);
+    for(var j=0; j<objects.length; j++){
+        if(!(j+1>=objects.length)){
+            if(Number(objects[j].year) > Number(objects[j+1].year)){
+                return sortObjectItems(objects);
             } 
         }
     }
-    return newArray;
+    return objects;
 }
 
 /****** CREATE and EDIT research entries ******/
