@@ -23,6 +23,7 @@ var path              = require("path"),
     
 // const mongoURI = 'mongodb://localhost/blogDB'; 
 const mongoURI = process.env.BLOGDATATBASEURL;
+console.log(mongoURI);
 // Create mongo connection
 const conn = mongoose.createConnection(mongoURI);
 // init gfs
