@@ -26,7 +26,7 @@ var mongoose = require("mongoose"),
     
 // Mongo URI
 // const mongoURI = 'mongodb://localhost/blogDB';
-
+mongoose.connect(process.env.BLOGDATATBASEURL);
 const mongoURI = process.env.BLOGDATATBASEURL;
 // Create mongo connection
 const conn = mongoose.createConnection(mongoURI);
