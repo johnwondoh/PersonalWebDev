@@ -638,7 +638,22 @@ section {
     box-shadow:none;
 }
 
+.categories-border1 {
+    border-left: solid 1px gray;
+}
 
+.categories-border2 {
+    border-left: solid 1px gray;
+}
+
+.categories-border3 {
+    border-left: solid 1px gray;
+}
+
+.categories-border4 {
+    border-left: solid 1px gray;
+    border-right: solid 1px gray;
+}
 
 /*button:hover, .selected {*/
 /*	color: white;*/

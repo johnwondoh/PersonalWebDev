@@ -32,6 +32,7 @@ var path              = require("path"),
 /* old connection approach*/
 // mongoose.connect('mongodb://localhost/blogDB');
 mongoose.connect(process.env.BLOGDATATBASEURL, { useNewUrlParser: true });
+// console.log('database -----\n' + process.env.BLOGDATATBASEURL);
 
 /* -- mongo connection set -- new way -- also adding gridfs --*/ 
 // Mongo URI
