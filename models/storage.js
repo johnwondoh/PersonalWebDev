@@ -5,7 +5,8 @@ var path              = require("path"),
     GridFsStorage     = require("multer-gridfs-storage"),
     Grid              = require("gridfs-stream");
     
-const mongoURI = 'mongodb://localhost/blogDB'; 
+// const mongoURI = 'mongodb://localhost/blogDB'; 
+const mongoURI = process.env.BLOGDATATBASEURL;
 
 //create storage engine
 const  storage = new GridFsStorage({
