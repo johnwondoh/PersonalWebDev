@@ -143,8 +143,23 @@
         margin-top: 10px;
     }
     
-    /*.clear { clear: both; height: 10px; }*/
-    /*.left-border .occupational-categories{*/
-    /*    display: none;*/
-    /*}*/
+    .categories-border1 {
+        border-left: none;
+        /*border-right: solid 1px gray;*/
+        border-bottom: solid 1px gray;
+    }
+    
+    .categories-border2 {
+        border-left: solid 1px gray;
+        border-bottom: solid 1px gray;
+    }
+    
+    .categories-border3 {
+        border-left: none;
+    }
+    
+    .categories-border4 {
+        border-left: solid 1px gray;
+        /*border-right: solid 1px gray;*/
+    }
 }
