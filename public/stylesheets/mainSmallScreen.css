@@ -165,8 +165,8 @@
 }
 
 
-/*Medium devices (tablets, 768px and up)*/
-@media (min-width: 768px) { 
+/*Medium devices (tablets, 768px)*/
+@media (max-width: 767.98px) { 
     .categories-border1 {
         border-left: none;
         /*border-right: solid 1px gray;*/
