@@ -23,11 +23,15 @@ var path              = require("path"),
 
 
 
+// const { MongoClient } = require("mongodb");
+// const uri = process.env.BLOGDATATBASEURL;
+
+// MongoClient.connect(uri,{ useNewUrlParser: true });
 
 
 /* old connection approach*/
 // mongoose.connect('mongodb://localhost/blogDB');
-mongoose.connect(process.env.BLOGDATATBASEURL);
+mongoose.connect(process.env.BLOGDATATBASEURL, { useNewUrlParser: true });
 
 /* -- mongo connection set -- new way -- also adding gridfs --*/ 
 // Mongo URI

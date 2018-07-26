@@ -144,5 +144,7 @@
     }
     
     /*.clear { clear: both; height: 10px; }*/
-
+    .left-border .occupational-categories{
+        display: none;
+    }
 }
