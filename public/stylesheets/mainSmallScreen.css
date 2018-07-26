@@ -163,3 +163,27 @@
         border-right: none;
     }
 }
+
+
+/*Medium devices (tablets, 768px and up)*/
+@media (min-width: 768px) { 
+    .categories-border1 {
+        border-left: none;
+        /*border-right: solid 1px gray;*/
+        border-bottom: solid 1px gray;
+    }
+    
+    .categories-border2 {
+        border-left: solid 1px gray;
+        border-bottom: solid 1px gray;
+    }
+    
+    .categories-border3 {
+        border-left: none;
+    }
+    
+    .categories-border4 {
+        border-left: solid 1px gray;
+        border-right: none;
+    }
+}
