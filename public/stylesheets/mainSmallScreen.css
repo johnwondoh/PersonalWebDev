@@ -160,6 +160,6 @@
     
     .categories-border4 {
         border-left: solid 1px gray;
-        /*border-right: solid 1px gray;*/
+        border-right: none;
     }
 }
