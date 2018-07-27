@@ -1,6 +1,6 @@
 # Personal Website
 
-This project is my personal website where I have entries about my projects, research, work experience and awards. It uses Bootstrap, Express, and Passport as the main frameworks. It supports Authentication, Authorization, and it is a full CRUD RESTful web app. Nodejs is used on the backend. It has been deployed and is the current site you are on now :)
+This project is my personal website where I have entries about my projects, research, work experience and awards. It uses Bootstrap, Express, and Passport as the main frameworks. It supports Authentication, Authorization, and it is a full CRUD RESTful web app. Nodejs is used on the backend. It has been deployed.
 
 This project is very useful for most people who want to have a website and want to be able to manage it without having to look at the HTML. It gives you the flexibility to work on your website like a social media platform. 
 
